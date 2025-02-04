@@ -365,7 +365,10 @@ void draw_room(Room *room) {
     
     for (int y = 0; y < ROOM_HEIGHT; y++) {
         mvaddch(start_y + y, start_x, '|');
-        mvaddch(start_y + y, start_x + ROOM_WIDTH - 1, '|');
+        if(rand()%10 == 0){
+            mvaddch(start_y + y, start_x + ROOM_WIDTH - 1, '?');
+        } else  mvaddch(start_y + y, start_x + ROOM_WIDTH - 1, '|');
+      
     }
     
     for (int y = 1; y < ROOM_HEIGHT - 1; y++) {
@@ -1012,7 +1015,10 @@ if (input == 'p' && current_weapon == 2) {
             case '2': new_y++; break; 
             case '4': new_x--; break; 
             case '6': new_x++; break;         
-    
+            case '7': new_x-- & new_y++ ; break;
+            case '1': new_x-- & new_y-- ; break;
+            case '3': new_x++ & new_y-- ; break;
+            case '9': new_x++ & new_y++ ; break;
             default: continue;
         }
                     wrefresh(score_win);
